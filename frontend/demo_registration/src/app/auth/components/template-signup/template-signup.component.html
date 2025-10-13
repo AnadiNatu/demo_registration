@@ -1,0 +1,80 @@
+<div class="container mt-4 p-4 rounded shadow-lg bg-light">
+  <h2 class="text-center mb-3 text-primary">Student Registration Form</h2>
+
+  <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+    <!-- Personal Details -->
+    <h4 class="mb-2 text-success">Personal Details</h4>
+
+    <div class="mb-3">
+      <label>Full Name:</label>
+      <input type="text" class="form-control" name="fullName" ngModel required />
+    </div>
+
+    <div class="mb-3">
+      <label>Date of Birth:</label>
+      <input type="date" class="form-control" name="dateOfBirth" ngModel required />
+    </div>
+
+    <div class="mb-3">
+      <label>Gender:</label><br />
+      <input type="radio" name="gender" value="Male" ngModel /> Male
+      <input type="radio" name="gender" value="Female" ngModel /> Female
+    </div>
+
+    <div class="mb-3">
+      <label>Nationality:</label>
+      <input type="text" class="form-control" name="nationality" ngModel />
+    </div>
+
+    <div class="mb-3">
+      <label>Contact Number:</label>
+      <input type="tel" class="form-control" name="contactNumber" ngModel />
+    </div>
+
+    <div class="mb-3">
+      <label>Email ID:</label>
+      <input type="email" class="form-control" name="emailId" ngModel required />
+    </div>
+
+    <div class="mb-3">
+      <label>Address:</label>
+      <textarea class="form-control" name="address" ngModel></textarea>
+    </div>
+
+    <!-- Academic Information -->
+    <h4 class="mb-2 text-success">Academic Information</h4>
+
+    <div class="mb-3">
+      <label>Previous Education:</label>
+      <input type="text" class="form-control" name="previousEducation" ngModel />
+    </div>
+
+    <div class="mb-3">
+      <label>Percentage in XII:</label>
+      <input type="number" step="0.1" class="form-control" name="percentage" ngModel />
+    </div>
+
+    <div class="mb-3">
+      <label>Upload XII Marksheet:</label>
+      <input type="file" class="form-control" name="twelfthMarkSheet" (change)="onFileSelected($event)" />
+    </div>
+
+    <div class="mb-3">
+      <label>Course Applying For:</label><br />
+      <input type="radio" name="courseApplying" value="BCA" ngModel /> BCA
+      <input type="radio" name="courseApplying" value="BBA" ngModel /> BBA
+      <input type="radio" name="courseApplying" value="B.Com" ngModel /> B.Com
+      <input type="radio" name="courseApplying" value="B.Tech" ngModel /> B.Tech
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" name="permissionGiven" ngModel required />
+      <label class="form-check-label">
+        I hereby declare that the above information is true to the best of my knowledge.
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2">Register</button>
+    <button type="reset" class="btn btn-danger">Clear</button>
+  </form>
+</div>
