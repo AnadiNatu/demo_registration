@@ -1,5 +1,6 @@
 package com.example.demo_registration.mapper;
 
+import com.example.demo_registration.dto.UserDetailDTO;
 import com.example.demo_registration.dto.UserSignUpDTO;
 import com.example.demo_registration.entity.Users;
 import com.example.demo_registration.enums.UserRoles;
@@ -40,4 +41,30 @@ public class DemoMapper {
 
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
+
+    public UserDetailDTO toUserDetailDTO(Users signUpDTO){
+
+        UserDetailDTO users = new UserDetailDTO();
+
+        users.setFullName(signUpDTO.getFullName());
+        users.setDateOfBirth(convertToDate(signUpDTO.getDateOfBirth()));
+        users.setGender(signUpDTO.getGender());
+        users.setNationality(signUpDTO.getNationality());
+        users.setContactNumber(signUpDTO.getContactNumber());
+        users.setEmailId(signUpDTO.getEmailId());
+        users.setAddress(signUpDTO.getAddress());
+        users.setPreviousEducation(signUpDTO.getPreviousEducation());
+        users.setPercentage(signUpDTO.getPercentage());
+
+        return users;
+    }
+
+    public static Date convertToDate(LocalDateTime localDateTime){
+        if (localDateTime == null){
+            return null;
+        }
+
+        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+    }
+
 }
